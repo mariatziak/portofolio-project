@@ -29,45 +29,34 @@
                 <div class="navbar-nav ml-auto">
                     <a class="nav-item nav-link" href="#">Twitter</a>
                     <a class="nav-item nav-link" href="#">Resume</a>
-                    <a class="nav-item nav-link" href="/blog/">Blog</a>
+                    <a class="nav-item nav-link active" href="#">Blog</a>
                 </div>
             </div>
         </nav>
     </header>
 
     <main role="main">
-
-        <section class="jumbotron text-center">
-            <div class="container">
-                <h1 class="jumbotron-heading">Hi, I'm Maria</h1>
-                <p class="lead text-muted">Hey, my name is Maria and I love to make Django websites. It's the thrill of handling the requests that the people want!</p>
-                <p>
-                    <a href="mailto:mtziak01@ucy.ac.cy" class="btn btn-primary my-2">Email Me</a>
-                </p>
-            </div>
-        </section>
-
-        <div class="album py-5 bg-light">
-            <div class="container">
-
-                <div class="row">
-
-                    {% for job in jobs.all %}
-                    <div class="col-md-4">
-                        <div class="card mb-4 shadow-sm">
-                            <img class="card-img-top" src="{{ job.image.url }}" />
-                            <div class="card-body">
-                                <p class="card-text">{{ job.summary }}</p>                             
-                            </div>
+        <div class="container">
+            <h1 class="text-center pt-3">Welcome to Maria's Blog</h1>
+            <br />
+            <br />
+            <h2>Latest Posts</h2>
+            <hr />
+            <div class="row mb-2">
+                {% for item in blog.all %}
+                <div class="col-md-6">
+                    <div class="card flex-md-row mb-4 shadow-sm h-md-250">
+                        <div class="card-body d-flex flex-column align-items-start">
+                            <strong class="d-inline-block mb-2 text-primary"> {{ item.title }}</strong>
+                            <div class="mb-1 text-muted">{{ item.pub_date }}</div>
+                            <p class="card-text mb-auto">{{ item.body }}</p>
                         </div>
+                        <img class="img-fluid" src="{{item.image.url}}" height="200" width="200" />
                     </div>
-                    {% endfor %}
-
-
                 </div>
+                {% endfor %}
             </div>
         </div>
-
     </main>
 
     <footer class="text-muted">
